@@ -1,0 +1,76 @@
+﻿@using PagedList.Mvc;
+@model PagedList.IPagedList < DoAnNhom1.Models.Area>
+@{
+    ViewBag.Title = "SearchArea";
+    Layout = "~/Views/Shared/index.cshtml";
+}
+<link href="~/Content/assets/producttrees.css" rel="stylesheet" />
+<section class="container" style="padding-top:10rem;">
+    <h1>Tìm Kiếm</h1>
+    @using (Html.BeginForm("SearchArea", "SearchPage", FormMethod.Get, new { @class = "form-inline" }))
+    {
+        <form class="form-inline my-2 my-lg-0 ">
+            @Html.TextBox("searchStrings", ViewBag.CurrentFilter as string, new { @class = "form-searchpage white-btn btn-light my-2 my-sm-0 bd-1" })
+            <button class="white-btn btn-primary my-2 my-sm-0 bd-1">
+                <i class="fa-solid fa-magnifying-glass " style="color: black;"></i>
+            </button>
+        </form>
+    }
+    <h4 class="text-success">@TempData["nofi"]</h4>
+    <div class="row mt-4">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4">
+                <div class="thumbnail m-2 overlay-sm">
+                    <a href="#">
+                        <img src="@Url.Content(item.ImgArea)" alt="mb" class="img-fluid rounded" style="width: 100%;">
+                    </a>
+                    <div class="view-button-bottom">
+                        @Html.ActionLink("Xem Tất Cả", "Index", "RenderTree", new { id = item.IDArea }, new { @class = "btn btn-outline-light btn-lg btn-block font-weight-bold text-uppercase" })
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            Page @(Model.PageNumber < 0 ? 0 : Model.PageNumber) of @Model.PageCount
+        </div>
+        <div class="col-md-6">
+            <div class="d-flex justify-content-end">
+                <nav aria-label="Page navigation">
+                    <ul class="pagination">
+                        <li class="page-item @(Model.PageNumber == 1 ? "disabled" : "")">
+                            <a class="page-link" href="@Url.Action("SearchP", new { page = 1, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter })" aria-label="First">
+                                <span aria-hidden="true">&laquo;&laquo;</span>
+                            </a>
+                        </li>
+                        <li class="page-item @(Model.PageNumber == 1 ? "disabled" : "")">
+                            <a class="page-link" href="@Url.Action("SearchP", new { page = Model.PageNumber - 1, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter })" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                        @for (int i = 1; i <= Model.PageCount; i++)
+                        {
+                            <li class="page-item @(Model.PageNumber == i ? "active" : "")">
+                                <a class="page-link" href="@Url.Action("SearchP", new { page = i, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter })">
+                                    @i
+                                </a>
+                            </li>
+                        }
+                        <li class="page-item @(Model.PageNumber == Model.PageCount ? "disabled" : "")">
+                            <a class="page-link" href="@Url.Action("SearchP", new { page = Model.PageNumber + 1, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter })" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                        <li class="page-item @(Model.PageNumber == Model.PageCount ? "disabled" : "")">
+                            <a class="page-link" href="@Url.Action("SearchP", new { page = Model.PageCount, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter })" aria-label="Last">
+                                <span aria-hidden="true">&raquo;&raquo;</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>

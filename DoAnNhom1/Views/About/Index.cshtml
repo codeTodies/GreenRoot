@@ -1,0 +1,36 @@
+﻿@model IEnumerable<DoAnNhom1.Models.QuantityTree>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/index.cshtml";
+    var totalQuantity = ViewBag.TotalQuantity;
+
+}
+
+<div class="banner-about d-flex align-items-center justify-content-center img-fluid">
+    <div class="banner-content">
+        <h1 class="banner-title text-white text-center text-uppercase mb-4">CHÚNG TÔI LÀ GREENROOTS</h1>
+        <h5 class="banner-title text-white text-center text-uppercase mb-4">TỔ CHỨC PHI LỢI NHUẬN TẬP TRUNG VÀO KÊU GỌI MỌI NGƯỜI QUYÊN GÓP TRỒNG RỪNG</h5>
+        <div class="banner-button text-center">
+            <button class="Red-btn btn-danger text-uppercase mr-3">
+                @Html.ActionLink("Cùng chung tay", "Indexs", "RenderTree", new { @class = "Blue" }, new { Style = "color:#ffffff;text-decoration:none" })
+            </button>
+        </div>
+    </div>
+</div>
+<div style="padding-top:8.2rem;" class="container">  
+        <div class="row">
+            <div class="col-md-6">
+                <img src="~/image/Tree.jpg" alt="Circle Image" width="300" height="300" class="rounded-circle" style="margin-left:10px">
+            </div>
+            <div class="col-md-6 m-auto">
+                <p style="text-align:center;font-size:2.5rem;">
+                    @(totalQuantity ?? 0)
+                    <b>cây đã được trồng</b>
+                </p>
+            </div>
+        </div>     
+</div>
+
+
+

@@ -1,0 +1,284 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>GreenRoot</title>
+    <link rel="shortcut icon" href="~/image/logo.jpg" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="~/Content/slick/slick.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/slick/slick-theme.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href='https://unpkg.com/css.gg@2.0.0/icons/css/shopping-bag.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="~/Content/assets/style.css" rel="stylesheet" />
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-inner">
+            <div class="container-fluid px-lg-5">
+                <nav class="navbar navbar-expand-lg my-navbar">
+                    <a class="navbar-brand" href="/Home/Index">
+                        <span class="logo ">
+                            <img src="~/image/logo.jpg" class="img-fluid p-1" style="width:65px; margin:-3px 0px 0px 0px;">GreenRoots
+                        </span>
+                    </a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"><i class="fas fa-bars" style="margin:5px 0px 0px 0px;"></i></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav m-auto">
+                            @*<li class="nav-item">
+                @Html.ActionLink("Trang Chủ", "Index", "Home", new { area = "" }, new { @class = "nav-link" })
+            </li>*@
+
+                            <li class="nav-item">
+                                @Html.ActionLink("Về Chúng Tôi", "Index", "About", new { area = "" }, new { @class = "nav-link" })
+                            </li>
+                            <li class="nav-item">
+                                @Html.ActionLink("Trồng Cây", "Indexs", "PlantTrees", new { area = "" }, new { @class = "nav-link" })
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle " href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Liên hệ
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="~/Contact/Index">
+                                        <p>Cung cấp thông tin liên hệ</p>
+                                    </a>
+                                    <a class="dropdown-item" href="https://www.facebook.com/huflit.edu.vn">Facebook</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="https://www.instagram.com/">Instagram</a>
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="~/Learn/Index">Thông Tin Thêm</a>
+                            </li>
+                        </ul>
+                        @using (Html.BeginForm("SearchP", "SearchPage", FormMethod.Get, new { @class = "searchbar form-inline " }))
+                        {
+                            <form class="form-inline my-2 my-lg-0 ">
+                                @Html.TextBox("searchString", ViewBag.CurrentFilter as string, new { @class = "searchinput form-searchpage white-btn btn-light my-2 my-sm-0" })
+                                <button class="white-btn btn-primary my-2 my-sm-0">
+                                    <i class="fa-solid fa-magnifying-glass" style="color: black;"></i>
+                                </button>
+                            </form>
+                        }
+                        @if (Session["NameUser"] == null)
+                        {
+                            <form class="form-inline my-2 my-lg-0 pr-4">
+                                <button class="blue-btn btn-primary my-2 my-sm-0">
+                                    @Html.ActionLink("Đăng Nhập", "Index", "Login", null,@*new { @class = "Blue" },*@new { Style = "color:#ffffff;text-decoration:none" })
+                                </button>
+                            </form>
+                        }
+                        @if (Session["NameUser"] != null)
+                        {
+                            <div class="dropdown visible">
+                                <a class="nav-link dropdown-toggle " href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <img class="img-fluid bg-light ml-3" src="~/image/us.png" alt="Alternate Text" width="50" style="margin-left:2px;"/>
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <p class="text-center">Hello,@Session["NameUser"]</p>
+                                    <a class="dropdown-item" href="~/Login/LogOutUser">
+                                        <p class="blue-btn">Đăng xuất</p>
+                                    </a>
+                                    @*@if (session["roleuser"] != null)
+                                    {
+                                        <a class="dropdown-item" href="https://www.facebook.com/huflit.edu.vn">facebook</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="https://www.instagram.com/">instagram</a>
+                                    }*@
+                                </div>
+
+                            </div>
+                        }
+
+                    </div>
+                </nav>
+
+            </div>
+        </div>
+    </header>
+
+    <div class="top-bar fixed-top " style="width: -1px; height: 0px; margin-right:3%; ">
+        <div class="float-right">
+               <form class="form-inline my-2 my-lg-0 ">
+                <a class=" d-flex align-items-center justify-content-center" style=" margin-top: 7rem;height:60px; width: 60px;" href="/ShoppingCart/ShowCart">
+                    <i class="fas fa-shopping-bag text-danger" style="font-size: 3rem;"></i>
+                    @Html.Action("BagCart", "ShoppingCart")
+                </a>
+
+            </form>
+            @*user*@
+
+
+        </div>
+    </div>
+    <div>
+        @RenderBody()
+    </div>
+    <footer id="Contact" class="text-center text-lg-start bg-light text-muted">
+        <!-- Section: Social media -->
+        <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+            <!-- Left -->
+            <div class="me-5 d-none d-lg-block">
+                <span>Liên hệ với chúng tôi tại:</span>
+            </div>
+            <!-- Left -->
+            <!-- Right -->
+
+            <div class="social-btn">
+                <a href='https://www.facebook.com/huflit.edu.vn' target="_blank" class="me-4 text-reset">
+                    <i class="fab fa-facebook"></i>
+                </a>
+                <a href='https://twitter.com/' target="_blank" class="me-4 text-reset">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href='https://www.instagram.com/' target="_blank" class="me-4 text-reset">
+                    <i class="fab fa-instagram"></i>
+                </a>
+            </div>
+            <!-- Right -->
+        </section>
+        <!-- Section: Social media -->
+        <!-- Section: Links  -->
+        <section>
+
+            <div class="container text-center text-md-start mt-5">
+                <!-- Grid row -->
+                <div class="row mt-3">
+                    <!-- Grid column -->
+                    <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                        <!-- Content -->
+                        <h6 class="text-uppercase fw-bold mb-4">
+                            <i class="fa fa-tree"></i> Sứ mệnh của GreenRoot
+                        </h6>
+                        <p>
+                            Sứ mệnh của chúng tôi là bảo vệ và duy trì sự cân bằng giữa con người và tự nhiên. Và chúng tôi cũng đang hướng đến mục tiêu lớn hơn, đó là xây dựng một thế giới bền vững, nơi mà con người sống hài hòa với môi trường xung quanh mình.
+                        </p>
+                    </div>
+                    <!-- Grid column -->
+                    <!-- Grid column -->
+                    <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                        <!-- Links -->
+                        <h6 class="text-uppercase fw-bold mb-4">
+                            Dịch vụ
+                        </h6>
+                        <p>
+                            <a href="#" class="text-reset text-decoration-none">Quyên góp</a>
+                        </p>
+                        <p>
+                            <a href="#" class="text-reset text-decoration-none">Tham gia cùng chúng tôi</a>
+                        </p>
+                        <p>
+                            <a href="#" class="text-reset text-decoration-none">Tin tức</a>
+                        </p>
+                        <p>
+                            <a href="#" class="text-reset text-decoration-none">Về chúng tôi</a>
+                        </p>
+                    </div>
+                    <!-- Grid column -->
+                    <!-- Grid column -->
+                    <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+                        <!-- Links -->
+                        <h6 class="text-uppercase fw-bold mb-4">
+                            Chính sách
+                        </h6>
+                        <p>
+                            <a href="#!" class="text-reset text-decoration-none">Điều khoản</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset text-decoration-none">Cài đặt</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset text-decoration-none">Chính sách bảo mật</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset text-decoration-none">Trợ giúp</a>
+                        </p>
+                    </div>
+                    <!-- Grid column -->
+                    <!-- Grid column -->
+                    <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                        <!-- Links -->
+                        <h6 class="text-uppercase fw-bold mb-4">Liên Hệ</h6>
+                        <p> <i class="fas fa-house"></i> Trường đại học Ngoại ngữ - Tin học TPHCM</p>
+
+
+                        <p>
+                            <i class="fas fa-inbox"></i>  plantgreenroot@gmail.com
+                        </p>
+                        <p> <i class="fas fa-phone"></i> + 0797 841 166</p>
+                        <p> <i class="fas fa-phone"></i> + 0778 706 084</p>
+                    </div>
+                    <!-- Grid column -->
+                </div>
+                <!-- Grid row -->
+            </div>
+        </section>
+        <!-- Section: Links  -->
+        <!-- Copyright -->
+        <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+            Version 01 © 2023 Copyright
+        </div>
+        <!-- Copyright -->
+    </footer>
+    <div id="gotop"></div>
+
+
+    <!-- Thêm các tài liệu JavaScript của Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="~/Content/slick/slick.min.js"></script>
+    <script src="~/Content/assets/scripts.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        const swiper = new Swiper('.swiper', {
+            // Optional parameters
+            loop: true,
+
+            // If we need pagination
+            pagination: {
+                el: '.swiper-pagination',
+            },
+
+            // Navigation arrows
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+
+            // And if we need scrollbar
+            scrollbar: {
+                el: '.swiper-scrollbar',
+            },
+        });
+    </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="~/Content/BTT/jquery.gotop.js"></script>
+    <script>
+        $('#gotop').gotop({
+            customHtml: '<i class="fa fa-angle-up fa-2x"></i>',
+            bottom: '2em',
+            right: '2em'
+        });
+    </script>
+    <script type="text/javascript">
+        $(function () {
+            var navbar = $('.header-inner');
+            $(window).scroll(function () {
+                if ($(window).scrollTop() <= 40) {
+                    navbar.removeClass('navbar-scroll');
+                } else {
+                    navbar.addClass('navbar-scroll');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+﻿@model DoAnNhom1.Models.AboutUs
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/_LayoutAdmin.cshtml";
+}
+
+<h2 class="text-center">Xóa tác giả</h2>
+
+<h3 class="text-danger">Bạn có chắc muốn xóa người này?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Tên tác giả
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NameUs)
+        </dd>
+
+        <dt>
+            Chức vụ
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RoleUs)
+        </dd>
+
+        <dt>
+            Hình ảnh
+        </dt>
+
+        <dd>
+            <img src="@Url.Content(Model.ImgUs)" alt="Image" width="450" height="200" />
+        </dd>
+
+        <dt>
+            Mô tả lời nhắn
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DescriptionUs)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xóa" class="btn btn-danger" /> |
+            @Html.ActionLink("Quay về danh sách", "Index", null, new { @class = "btn btn-secondary" })
+        </div>
+    }
+</div>

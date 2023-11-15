@@ -1,0 +1,102 @@
+﻿@model DoAnNhom1.ViewModels.CombineViewModel
+@{
+    ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/index.cshtml";
+}
+<link rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+<div class="banner d-flex align-items-center justify-content-center img-fluid">
+    <div class="banner-content">
+        <h1 class="banner-title text-white mb-4">Plant the tree, Nurture the Earth!</h1>
+        <div class="banner-button text-center">
+            @Html.ActionLink("Trồng cây","Indexs","PlantTrees", new { area = "" }, new { @class = "white-btn btn-light text-uppercase text-decoration-none" })
+        </div>
+    </div>
+</div>
+<section class="section">
+    <h2 class="title text-center text-uppercase font-weight-bold m-4">Nơi Muốn Trồng</h2>
+    <hr />
+    <div class="container-fluid ">
+        <div class="row">
+            @foreach (var item in Model.RegionsData)
+            {
+                <div class="col-md-4">
+                    <div class="thumbnail mt-3 overlay-sm">
+                        <img src="@Url.Content(item.ImgRe)" alt="mb" class="img-fluid">
+                        <div class="view-button-bottom">
+                            @Html.ActionLink("Xem tất cả", "Index", "PlantTrees", new { id = item.IDRe }, new { @class = "btn btn-outline-light btn-lg btn-block font-weight-bold text-uppercase" })
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+<div style="padding-top:8.2rem;" class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <img src="~/image/home-3.png" alt="Circle Image" class="" style="margin-left:10px;width:100%;">
+        </div>
+        <div class="col-md-6 m-auto text-center">
+            <p style="font-size:2.5rem;text-transform:uppercase">Thành tựu chúng tôi đã đạt được</p>
+            <p class="">Số lượng cây mà chúng tôi đã kêu gọi quyên góp thành công để trồng trên mọi miền đất nước</p>
+            <a class="text-decoration-none" href="~/Home/StatisticTree">
+                <div class="Red-btn btn-danger ">Số lượng cây đã trồng</div>
+            </a>            
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div id="GioiThieu" class="title text-uppercase text-center m-3">
+    </div>
+    <div class="becomebusiness d-flex align-items-center justify-content-center img-fluid">
+        <div class="banner-ct text-center">
+            <h1 class="banner-title text-white mb-4">BỀN VỮNG CHO DOANH NGHIỆP</h1>
+            <h5 class="banner-title text-white mb-4">TẠO TÁC ĐỘNG THỰC SỰ VÀ NÂNG CAO CÁC SÁNG KIẾN BỀN VỮNG CỦA CÔNG TY BẠN TRONG NĂM 2023</h5>
+            <a href="~/Contact/Index" class="banner-button text-center text-decoration-none">
+                <div class=" white-btn btn-light text-uppercase">Trở thành đối tác của chúng tôi</div>
+            </a>
+        </div>
+    </div>
+</div>
+
+<div id="page" class="site">
+    <div class="container-fluid">
+        <div class="testi">
+            <div class="head">
+                <h2 class="title text-center text-uppercase font-weight-bold m-4">Đôi lời từ nhóm phát triển</h2>
+            </div>
+            <div class="body swiper">
+                <ul class="swiper-wrapper">
+                    @foreach (var us in Model.AboutUsData)
+                    {
+                        <li class="swiper-slide">
+                            <div class="wrapper">
+                                <div class="thumbnails">
+                                    <img src="@Url.Content(us.ImgUs)" alt="" />
+                                </div>
+                                <div class="aside">
+                                    <p> @Html.DisplayFor(modelItem => us.DescriptionUs)</p>
+                                    <div class="name">
+                                        <h4>@Html.DisplayFor(modelItem => us.NameUs)</h4>
+                                        <p>@Html.DisplayFor(modelItem => us.RoleUs)</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    }
+                </ul>
+                <div class="swiper-pagination"></div>
+                <!-- If we need navigation buttons -->
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    document.getElementById("plantTreesButton").addEventListener("click", function() {
+        window.location.href = '@Url.Action("Indexs", "PlantTrees", new { area = "" })';
+    });
+</script>

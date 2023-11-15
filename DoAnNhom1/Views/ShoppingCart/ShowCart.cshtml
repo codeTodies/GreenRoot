@@ -1,0 +1,165 @@
+﻿@*@model DoAnNhom1.Models.Cart
+
+@{
+    ViewBag.Title = "ShowCart";
+    Layout = "/Views/Shared/index.cshtml";
+}
+
+<div style="padding:100px">
+    <h2 class="mt-5">Giỏ Hàng</h2>
+    <a href="@Url.Action("Index","ProductTree")"> Tiếp tục mua hàng </a>
+
+    @if (Model != null)
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Ten Sp</th>
+                    <th>SL hang con lai</th>
+                    <th>Hinh SP</th>
+                    <th>Gia</th>
+
+                    <th>Thanh Tien</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Items)
+                {
+                    decimal total = item._quantity * (decimal)item._tree.Price;
+                    <tr>
+                        <td>@Html.DisplayFor(model => item._tree.NameTree)</td>
+                        <td><img src="@Url.Content(item._tree.ImageTree)" height="50" width="50" /> </td>
+                        <td>@Html.DisplayFor(model => item._tree.Price)</td>
+                        <td>
+                            @using (Html.BeginForm("Update_Cart_Quantity", "ShoppingCart"))
+                            {
+                                <input type="hidden" value="@item._tree.TreeID" name="idPro" />
+                                <input type="number" value="@item._quantity" name="cartQuantity" />
+                                <input type="submit" value="Update" />
+                            }
+                        </td>
+                        <td>@total</td>
+                        <td>
+                            <a href="/ShoppingCart/RemoveCart/@item._tree.TreeID">Xoa</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+            <tr>
+                <td colspan="6" style="text-align:right;">Tong Tien: @Model.Total_money()</td>
+            </tr>
+            <tr>
+                <td colspan="2"></td>
+                <td colspan="4">
+                    @using (Html.BeginForm("CheckOut", "ShoppingCart"))
+                    {
+                        <table>
+                            <tr>
+                                <td></td>
+                                <td>
+                                    <input type="submit" name="CheckOut" class="btn btn-success" />
+                                </td>
+                            </tr>
+                        </table>
+                    }
+                </td>
+            </tr>
+            <tr>
+                <td style="border-top:none;text-align:right" colspan="10"><a href="/ShoppingCart/PaymentWithPayPal" class="btn btn-success">Thanh toán bằng Paypal</a></td>
+            </tr>
+        </table>
+    }
+    else
+    {
+        @Html.Partial("EmptyCart")
+    }
+</div>*@
+
+
+
+
+@model DoAnNhom1.Models.Cart
+
+@{
+    ViewBag.Title = "ShowCart";
+    Layout = "/Views/Shared/index.cshtml";
+}
+<link href="~/Content/assets/bag.css" rel="stylesheet">
+
+@if (Model != null)
+{
+    <div class="container px-3 my-5 clearfix " style="padding-top:9rem;">
+        <div class="card">
+            <div class="card-header">
+                <h2>Giỏ Hàng</h2>
+                <div class="float-right">
+                    <a class="blue-btn btn-lg btn-primary mt-2 text-decoration-none" href="@Url.Action("Indexs","PlantTrees")"> Tiếp Tục Chọn Khu Vực Muốn Trồng </a>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered m-0">
+                        <thead>
+                            <tr>
+
+                                <th class="text-left py-3 px-4" style="min-width: 400px;">Loại Cây</th>
+                                <th class="text-left py-3 px-4" style="width: 100px;">Đơn Giá</th>
+                                <th class="text-center py-3 px-4" style="width: 120px;">Số lượng</th>
+                                <th class="text-right py-3 px-4" style="width: 100px;">Số Tiền</th>
+                                <th class="text-center py-3 px-4" style="width: 120px;">Thao Tác<a href="#" class="shop-tooltip float-none text-light" title="" data-original-title="Clear cart"><i class="ino ion-md-trash"></i></a></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.Items)
+                            {
+                                decimal total = item._quantity * (decimal)item._tree.Price;
+                                <tr>
+                                    <td class="p-4">
+                                        <div class="media align-items-center">
+                                            <img src="@Url.Content(item._tree.ImageTree)" class="d-block ui-w-40 ui-bordered mr-4" alt="">
+                                            <div class="media-body">
+                                                <a href="#" class="d-block text-dark">@Html.DisplayFor(model => item._tree.NameTree)</a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="text-right font-weight-semibold align-middle p-4">@Html.DisplayFor(model => item._tree.Price)</td>
+
+                                    <td class="align-middle p-4">
+                                        @using (Html.BeginForm("Update_Cart_Quantity", "ShoppingCart"))
+                                        {
+                                            <input type="hidden" value="@item._tree.TreeID" name="idPro" />
+                                            <input class="form-control text-center" type="number" value="@item._quantity" name="cartQuantity" />
+                                            <input class="blue-btn btn-lg btn-primary mt-2" type="submit" value="Cập Nhật" />
+
+                                        }
+                                    </td>
+                                    <td class="text-right font-weight-semibold align-middle p-4">@total</td>
+                                    <td class="text-center align-middle px-0"><a href="/ShoppingCart/RemoveCart/@item._tree.TreeID" class="shop-tooltip close float-none text-danger" title="" data-original-title="Remove">×</a></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                @using (Html.BeginForm("CheckOut", "ShoppingCart"))
+                {
+                    <div class="d-flex flex-wrap justify-content-between align-items-center pb-4">
+                        <div class="float-right">
+                            <div class="text-right ">
+                                <label class="text-muted font-weight-normal m-0">Tổng Tiền:</label>
+                                <span class="text-large"><strong>@Model.Total_money()</strong> USD</span>
+                            </div>
+                            <input type="submit" name="CheckOut" value="Thanh toán" class="blue-btn btn-primary" />
+                        </div>
+                    </div>
+                    
+                }
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    @Html.Partial("EmptyCart")
+}
+

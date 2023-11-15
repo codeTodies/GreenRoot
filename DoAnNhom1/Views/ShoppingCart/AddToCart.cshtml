@@ -1,0 +1,25 @@
+﻿﻿
+
+@model IEnumerable<DoAnNhom1.Models.Tree>
+@{
+    ViewBag.Title= "Index";
+    Layout = "~/Views/Shared/index.cshtml";
+}
+
+<h2> DANH SÁCH SẢN PHẨM</h2>
+<div class="container">
+    <div class="row">
+        @foreach (var pro in Model)
+        {
+            <div class="col-sm-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="card-pro">
+                    <p>@Html.DisplayFor(model => pro.TreeID)</p>
+                    <img src="@Url.Content(pro.ImageTree)" height="150" width="150" />
+                    <p>@Html.DisplayFor(model => pro.TreeID)</p>
+                    <p>@Html.DisplayFor(model => pro.Price)</p>
+                    <a href="/ShoppingCart/AddToCart/@pro.TreeID" class="btn btn-default">Buy</a>
+                </div>
+            </div>
+        }
+    </div>
+</div>

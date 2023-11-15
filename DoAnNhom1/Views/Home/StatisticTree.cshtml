@@ -1,0 +1,36 @@
+﻿@model IEnumerable<DoAnNhom1.Models.QuantityTree>
+
+@{
+    ViewBag.Title = "StatisticTree";
+    Layout = "~/Views/Shared/index.cshtml";
+}
+
+<link href="~/Content/assets/RenderTrees.css" rel="stylesheet" />
+<div class="container" style="padding:100px">
+    <h2 class="text-center">Những cây được quyên góp để trồng nhiều nhất</h2>
+    <div class="row mt-3">
+        @foreach (var pro in Model)
+        {
+            <div class="col-md-4">
+                <div class="card mb-4 box-shadow">
+                    <img class="card-img-top img-fluid" style="height:200px" src="@Url.Content(pro.ImageTree)" alt="Product Image">
+                    <div class="card-body">
+                        <h5 class="card-title">@Html.DisplayFor(model => pro.NameTree)</h5>
+                        <p class="card-text">
+                            Vùng: @Html.DisplayFor(model => pro.NameArea)<br />
+                            Giá: @Html.DisplayFor(model => pro.Price) USD<br />
+                            Đã trồng: @Html.DisplayFor(model => pro.Sum_Quantity) cây
+                        </p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                                <a href="/ShoppingCart/AddToCart/@pro.TreeID" class="btn btn-sm btn-outline-secondary">Buy</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+

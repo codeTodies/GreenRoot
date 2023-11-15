@@ -1,0 +1,49 @@
+﻿     @model IEnumerable<DoAnNhom1.Models.Info>
+    @{
+        ViewBag.Title = "Learn";
+        Layout = "~/Views/Shared/index.cshtml";
+    }
+    <link href="~/Content/assets/styles.css" rel="stylesheet" />
+    <div class="banner-learn d-flex align-items-center justify-content-center img-fluid">
+        <div class="banner-content">
+            <h1 class="banner-title text-white text-center text-uppercase mb-4">cây?</h1>
+            <h5 class="banner-title text-white text-center text-uppercase mb-4">Là nguồn tài nguyên vô giá trên trái đất này</h5>
+            <div class="banner-button text-center ">
+                <button class=" blue-btn btn-info text-uppercase mr-2">
+                    @Html.ActionLink("Trồng cây", "Indexs", "RenderTree", new { @class = "Blue" }, new { Style = "color:#ffffff;text-decoration:none" })
+                </button>
+            </div>
+        </div>
+    </div>
+    <section style="padding-top:6rem">
+        <h2 class="text-center mb-5">Thông tin thêm</h2>
+        @foreach (var item in Model)
+        {
+            <div class="container">
+                <div class="row mt-2">
+                    <div class="col-md-6 m-auto">
+                        <p style="text-align:center;font-size:2.5rem;">@Html.DisplayFor(modelItem => item.Title)</p>
+                        <p style="font-size:1.2rem;">@Html.DisplayFor(modelItem => item.Content)</p>
+                    </div>
+                    <div class="col-md-6 m-auto">
+                        <img src="@Url.Content(item.ImgInfo)" alt="Circle Image" class="" style="margin-left: 10px; width:100%;">
+                    </div>
+
+                </div>
+        
+                @*<div class="row">
+                    <div class="col-md-4">
+                        <img src="~/image/whyplant-2.jpg" alt="Square Image" class="img-fluid" style="margin-left:10px; width:100%;">
+                    </div>
+                    <div class="col-md-8 m-auto ">
+                        <p style="font-size:1.2rem;">Ngoài ra, việc trồng cây còn giúp tạo ra những khu vực xanh mướt trong các thành phố, là nơi nghỉ ngơi tuyệt vời cho cư dân địa phương và còn là lưu trữ của nhiều loại động và thực vật quý hiếm. Bằng việc trồng cây, chúng ta không chỉ tạo ra một môi trường sống lành mạnh cho chính mình mà còn góp phần vào việc bảo vệ môi trường toàn cầu. Hãy trồng cây để chúng ta có một hành tinh xanh, sạch và bền vững cho tương lai.</p>
+
+                    </div>
+                </div>*@
+            </div>
+        }
+        </section>
+
+
+
+

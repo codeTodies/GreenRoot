@@ -1,0 +1,599 @@
+﻿/*header*/
+.header{position: relative;
+width: 100%;
+}
+
+.header-inner{position: absolute;
+top: 0;
+left: 0;
+width:100%;
+z-index: 99;
+background-color: rgba(27, 29, 34, 0.9);
+}
+.navbar-toggler-icon{
+    color:red;
+}
+
+.logo {
+    color: #ffffff;
+    font-size: 26px;
+}
+.logo img {
+    border-radius:20%;
+}
+
+.nav-item .nav-link {
+    display: block;
+    line-height: 36px;
+    text-transform: capitalize;
+    font-size: 19px;
+    font-weight: 500;
+    color: #ffffff;
+    transition: 0.15s;  
+}
+
+
+    .nav-item .nav-link:hover {
+        color: #bcb0b0;
+    }
+
+@media screen and (min-width:1850) {
+    .searchinput {
+        display: none;
+    }
+    .top-bar{
+        margin-left:20%;
+    }
+}
+    .Red-btn {
+        color: #ffffff;
+        /*border-radius: 30px;*/
+        background-color: #FE4066;
+        border: none;
+        font-weight: 500;
+        outline: none;
+        font-size: 20px;
+        padding: 7px 22px;
+        transition: 0.5s;
+    }
+
+    .blue-btn {
+        color: #ffffff;
+        /*border-radius: 30px;*/
+        background-color: #4b35ffa6;
+        border: none;
+        font-weight: 500;
+        outline: none;
+        font-size: 20px;
+        padding: 7px 22px;
+        transition: 0.5s;
+    }
+
+    .white-btn {
+        color: black;
+        /*border-radius: 30px;*/
+        background-color: white;
+        border: none;
+        font-weight: 500;
+        outline: none;
+        font-size: 20px;
+        padding: 7px 22px;
+        transition: 0.5s;
+    }
+
+    .gray-btn {
+        color: white;
+        /*border-radius: 30px;*/
+        background-color: #2b2b2b;
+        border: none;
+        font-weight: 500;
+        outline: none;
+        font-size: 20px;
+        padding: 7px 22px;
+        transition: 0.5s;
+    }
+
+    .navbar-scroll {
+        background-color: #ffffff;
+        padding: 0;
+        position: fixed;
+        top: 0;
+        z-index: 99;
+        box-shadow: 0px 1px 10px rgba(0,0,0,0.4);
+        transition-duration: 0.6s;
+    }
+
+        .navbar-scroll .nav-item .nav-link {
+            color: black;
+        }
+
+        .navbar-scroll .Red-btn {
+            color: #ffffff;
+            background-color: #fe4066;
+        }
+
+.navbar-scroll .blue-btn {
+    color: #ffffff;
+    background-color: #4b35ffa6;
+}
+
+        .navbar-scroll .white-btn {
+            border: 1px solid black;
+            /*background-color: #fe4066;*/
+        }
+
+    .bd-1 {
+        border: 1px solid black;
+    }
+
+    .navbar-scroll .logo {
+        color: #000;
+        font-weight: 500;
+    }
+
+
+
+    .hidden {
+        top: -100px;
+    }
+
+    .nav-logo img {
+        width: 20%;
+        height: 20%;
+    }
+
+    .nav-logo span {
+        font-weight: 700;
+    }
+
+    .nav-item {
+        font-size: 1rem;
+    }
+
+    .nav-link {
+        margin: 0.4rem;
+    }
+
+    .nav-logo img {
+        border-radius: 40%;
+    }
+
+    /*Endheader*/
+    /*banner*/
+
+    .banner {
+        background-image: url(/image/background.jpg);
+        height: 100vh;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .img-test {
+    }
+
+    .banner-about {
+        background-image: url(/image/thongdiep1.jpg);
+        height: 100vh;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .banner-learn {
+        background-image: url(/image/banner-learn.jpg);
+        height: 100vh;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .banner-button button {
+        width: 40%;
+        height: 4rem;
+        font-size: 1.5rem;
+    }
+
+    .banner-title {
+        font-weight: 800;
+        text-shadow: 5px 1px 3px rgb(0 0 0 / 55%);
+    }
+    /*ENDbanner*/
+    /*thongdiep*/
+    .becomebusiness {
+        background-image: url(/image/thongdiep1.jpg);
+        height: 100vh;
+        background-size: cover;
+        background-position: center;
+        opacity: 95%;
+    }
+
+    .together-plant {
+        background-image: url(/image/togtether-plant.jpg);
+        height: 100vh;
+        background-size: cover;
+        background-position: center;
+        opacity: 99%;
+    }
+
+    .PlantTrees-bg {
+        background-color: #1e3937;
+        background-size: cover;
+        background-position: center;
+        opacity: 99%;
+    }
+
+
+
+
+
+    .thumbnail {
+        position: relative;
+        overflow: hidden;
+    }
+
+        .thumbnail img {
+            transition: transform 0.3s ease;
+        }
+
+        .thumbnail:hover img {
+            transform: scale(1.1);
+        }
+
+        .thumbnail .caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 10px;
+            color: #fff;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .thumbnail:hover .caption {
+            opacity: 1;
+        }
+
+        .thumbnail .caption a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+    .together-content .title p {
+        color: white;
+        font-weight: 800;
+        font-size: 3rem;
+        text-shadow: 5px 1px 3px rgb(0 0 0 / 55%);
+    }
+
+
+    .social-btn a {
+        text-decoration: none
+    }
+
+    /*thongdiep*/
+
+
+
+    /*hover PlantTrees */
+    .overlay {
+        position: relative;
+    }
+
+        .overlay:hover img {
+            opacity: 0.5;
+        }
+
+    overlay-sm {
+        position: relative;
+    }
+
+    .overlay-sm:hover img {
+        opacity: 0.9;
+    }
+
+    .view-button {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        opacity: 0;
+    }
+
+    .view-button-bottom {
+        position: absolute;
+        top: 80%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        opacity: 0;
+    }
+
+        .view-button button, .view-button-bottom button {
+            width: 200px;
+        }
+
+
+    .overlay:hover .view-button, .overlay:hover .view-button-botton {
+        opacity: 1;
+    }
+
+    .overlay-sm:hover .view-button, .overlay-sm:hover .view-button-bottom {
+        opacity: 1;
+    }
+
+    /*Testi*/
+    :root {
+        --primary-color: #3742fa;
+        --white-color: #ffffff;
+        --light-color: #ced6e0;
+        --dark-color: #2f3542;
+        --box-shadow: rgb(0 0 2/ 35%) 0px 20px 30px -10px
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    *, ::before, ::after {
+        box-sizing: border-box;
+    }
+
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+
+    a, button, div[role="button"] {
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    ul {
+        list-style: none;
+    }
+
+    h1, h2, h3, h4 {
+        font-weight: 500;
+        line-height: normal;
+    }
+
+    h1 {
+        font-size: 2.5em;
+    }
+
+    h2 {
+        font-size: 2em;
+    }
+
+    h3 {
+        font-size: 1.5em;
+    }
+
+    h4 {
+        font-size: 1em;
+    }
+
+    .body {
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 1.8;
+        color: var(--dark-color);
+        background-color: var(--white-color);
+    }
+
+    .site {
+        /*height: 100vh;*/
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .containers {
+        max-width: 1100px;
+        width: 100%;
+        padding: 0 30px;
+        margin: 0 auto;
+    }
+
+    .testi {
+        max-width: 900px;
+        margin: 0 auto;
+    }
+
+        .testi .wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 60px;
+            padding: 30px 0
+        }
+
+        /*Thumb*/
+        .testi .thumbnails {
+            width: 150px;
+            height: 150px;
+            position: relative;
+            flex-shrink: 0;
+            z-index: 1;
+        }
+
+            .testi .thumbnails img {
+                object-fit: cover;
+                width: 100%;
+                height: 100%;
+                border-radius: 50%;
+                transform: scale(2);
+                transition: transform 0.5s;
+            }
+
+        .testi .swiper-slide-active .thumbnails img {
+            transform: scale(1);
+        }
+
+        .testi .thumbnails::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: calc(100% + 30px);
+            height: calc(100% + 10px);
+            background-color: var(--primary-color);
+            border-radius: 50%;
+            z-index: -1;
+            box-shadow: var(--box-shadow);
+            transition: border-radius .5s .3s;
+        }
+
+        .testi .swiper-slide-active .thumbnails::before {
+            border-radius: 33% 67% 50% 50%/ 50% 14% 86% 50%;
+        }
+
+        .testi .aside {
+            position: relative;
+            padding-top: 15px;
+            display: flex;
+            flex-direction: column;
+            z-index: 1;
+        }
+
+            .testi .aside > p {
+                position: relative;
+                font-size: 14px;
+                line-height: normal;
+                margin-bottom: 30px;
+                opacity: 0;
+                transform: translateX(10%);
+                transition: transform 1s, opacity 1s;
+            }
+
+        .testi .swiper-slide-active .aside > p {
+            transform: translateX(0);
+            opacity: 1;
+        }
+
+        .testi .aside > p::before,
+        .testi .aside > p::after {
+            font-size: 80px;
+            font-weight: 800;
+            line-height: 1;
+            position: absolute;
+            color: var(--light-color);
+            height: 40px;
+            z-index: -1;
+        }
+
+        .testi .aside > p::before {
+            content: open-quote;
+            top: -40px;
+            left: 10px;
+        }
+
+        .testi .aside > p::after {
+            content: close-quote;
+            right: 0;
+        }
+
+        .testi .aside .name {
+            position: relative;
+            width: fit-content;
+            line-height: 1;
+            opacity: 0;
+            transform: translateX(30px);
+            transition: transform 1s .2s, opacity 1s .3s;
+        }
+
+        .testi .swiper-slide-active .name {
+            transform: translateX(0);
+            opacity: 1;
+        }
+
+        .testi .aside .name h4 {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--primary-color);
+            opacity: .8;
+        }
+
+        .testi .aside .name p {
+            font-size: 18px;
+            text-align: right;
+        }
+
+        /*slider*/
+        .testi :is(.swiper-button-next, .swiper-button-prev) {
+            background-color: var(--light-color);
+            top: 35%;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            transition: background-color .3s;
+            box-shadow: var(--box-shadow)
+        }
+
+            .testi :is(.swiper-button-next, .swiper-button-prev)::after {
+                font-size: 16px;
+                font-weight: 800;
+                color: var(--white-color);
+            }
+
+            .testi :is(.swiper-button-next, .swiper-button-prev):hover {
+                background-color: var(--primary-color);
+            }
+
+        .testi .swiper-pagination {
+            position: relative;
+        }
+
+            .testi .swiper-pagination span {
+                background-color: var(--light-color);
+                transition: width .3s;
+                opacity: 1;
+            }
+
+            .testi .swiper-pagination .swiper-pagination-bullet-active {
+                width: 26px;
+                border-radius: 4px;
+                background-color: var(--primary-color);
+            }
+
+    @media screen and (min-width:768px) {
+        .testi .wrapper {
+            flex-direction: row;
+            padding: 30px 100px;
+         
+        }
+        .top-bar {
+            margin-top: 6rem;
+        }
+
+        .testi .thumbnails {
+            width: 200px;
+            height: 200px;
+        }
+
+        .testi :is(.swiper-button-next, .swiper-button-prev) {
+            top: 50%;
+        }
+
+        .testi .swiper-slide-active .name {
+            transform: translateX(-50px);
+        }
+
+        .testi .aside {
+            position: relative;
+            padding-top: 15px;
+            display: flex;
+            flex-direction: column;
+            z-index: 1;
+            align-self: flex-end;
+        }
+    }
+
+
+
+
+
+
+
+
+
+

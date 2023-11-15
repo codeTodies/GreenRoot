@@ -1,0 +1,53 @@
+﻿@model DoAnNhom1.Models.AdminUser
+
+@{
+    ViewBag.Title = "login";
+    Layout = null;
+}
+
+<link rel="stylesheet" href="~/Content/assets/Login.css">
+<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+<body>
+    <div class="wrapper">
+        @using (Html.BeginForm("Login", "Login"))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <form action="">
+            <h1>Đăng nhập</h1>
+            <p style="color:red;text-align:center">@ViewBag.ErrorInfo</p>
+            <div class="input-box">
+                @Html.TextBox("NameUser", null, new { @class = "form-control input_user", placeholder = "Tên đăng nhập" })
+                <i class='bx bxs-user'></i>
+                <div>
+                    @Html.ValidationMessageFor(model => model.NameUser)
+                </div>
+            </div>
+            <div class="input-box">
+                @Html.Password("PasswordUser", null, new { @class = "form-control input_pass", placeholder = "Mật khẩu" })
+                <i class='bx bxs-lock-alt'></i>
+            </div>
+            <div>
+                @Html.ValidationMessageFor(model => model.PasswordUser)
+            </div>
+            <button type="submit" class="btn login_btn">Đăng nhập</button>
+            <div class="register-link">
+                <p>Chưa Có tài khoản ? <a href="/Login/Create">Tạo Tài Khoản</a></p>
+            </div>
+            <div class="register-link">
+                <p>Đăng Nhập Với Tài Khoản Quản Trị Viên ? <a href="~/Login/Admin">Đăng nhập</a></p>
+            </div>
+        </form>
+        }
+    </div>
+
+
+
+    <script>
+        $('.message a').click(function () {
+            $('form').animate({ height: "toggle", opacity: "toggle" }, "slow");
+        });
+    </script>
+
+</body>
+
